@@ -35,19 +35,22 @@
     display: block !important;
   }
 
-  /* Research Figure 3: display at 120% of its original rendered size */
+  /* Research Figure 3: slightly larger, but never overflow outside the content area */
   .research-fig.fig3-enlarged {
-    width: 120% !important;
-    max-width: 120% !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    overflow: hidden !important;
   }
-
+  
   .research-fig.fig3-enlarged img {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
     display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 </style>
 
