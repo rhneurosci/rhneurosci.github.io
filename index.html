@@ -35,31 +35,19 @@
     transform-origin: bottom right !important;
   }
 
-  /* Homepage visitor counter */
-  .visit-counter {
-    margin-top: 1.2rem;
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.55rem 0.85rem;
-    border: 1px solid rgba(44, 62, 80, 0.18);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-    font-size: 0.92rem;
+
+  /* Footer visitor counter: shown only on the homepage */
+  .footer-visitor-counter {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
     color: #5b6675;
+    text-align: center;
     line-height: 1.6;
+    white-space: nowrap;
   }
 
-  .visit-counter .visit-number {
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: #2c3e50;
-  }
-
-  .visit-counter .counter-sep {
-    color: #9aa3af;
+  .footer-visitor-counter span {
+    display: inline !important;
   }
 
 </style>
@@ -132,21 +120,6 @@
         <li class="tag"><span class="lang zh-cn">行为侦测系统开发</span><span class="lang zh-tw">行為偵測系統開發</span><span class="lang en">Behavioral Detection Systems</span></li>
         <li class="tag"><span class="lang zh-cn">人工智能</span><span class="lang zh-tw">人工智能</span><span class="lang en">Artificial Intelligence</span></li>
       </ul>
-      <div class="visit-counter" aria-label="Visitor counter">
-        <span>
-          <span class="lang zh-cn">本站访问量：</span>
-          <span class="lang zh-tw">本站訪問量：</span>
-          <span class="lang en">Site Visits: </span>
-          <span class="visit-number" id="busuanzi_value_site_pv">--</span>
-        </span>
-        <span class="counter-sep">|</span>
-        <span>
-          <span class="lang zh-cn">访客人数：</span>
-          <span class="lang zh-tw">訪客人數：</span>
-          <span class="lang en">Visitors: </span>
-          <span class="visit-number" id="busuanzi_value_site_uv">--</span>
-        </span>
-      </div>
     </div>
     <div class="hero-card">
       <img src="images/profile.jpg" alt="韩睿 Rui Han" class="profile-img">
@@ -219,6 +192,13 @@
 
 <footer>
   <div class="container">
+    <div class="footer-visitor-counter">
+      <span class="lang zh-cn">访客人数：</span>
+      <span class="lang zh-tw">訪客人數：</span>
+      <span class="lang en">Visitors: </span>
+      <span id="busuanzi_value_site_uv">--</span>
+    </div>
+
     <span class="lang zh-cn">&copy; RH Brain Lab ｜ 厦门大学嘉庚学院</span>
     <span class="lang zh-tw">&copy; RH Brain Lab ｜ 廈門大學嘉庚學院</span>
     <span class="lang en">&copy; RH Brain Lab ｜ Xiamen University Tan Kah Kee College</span>
@@ -226,6 +206,6 @@
 </footer>
 
 <script src="js/main.js"></script>
-
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
