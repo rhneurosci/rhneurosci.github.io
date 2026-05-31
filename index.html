@@ -34,6 +34,33 @@
     transform: scale(1.5) !important;
     transform-origin: bottom right !important;
   }
+
+  /* Homepage visitor counter */
+  .visit-counter {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .visit-counter .visit-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid rgba(44, 62, 80, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    font-size: 0.92rem;
+  }
+
+  .visit-counter .visit-number {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
 </style>
 
 </head>
@@ -104,6 +131,20 @@
         <li class="tag"><span class="lang zh-cn">行为侦测系统开发</span><span class="lang zh-tw">行為偵測系統開發</span><span class="lang en">Behavioral Detection Systems</span></li>
         <li class="tag"><span class="lang zh-cn">人工智能</span><span class="lang zh-tw">人工智能</span><span class="lang en">Artificial Intelligence</span></li>
       </ul>
+      <div class="visit-counter" aria-label="Visitor counter">
+        <div class="visit-item">
+          <span class="lang zh-cn">今日访问量</span>
+          <span class="lang zh-tw">今日訪問量</span>
+          <span class="lang en">Today</span>
+          <span class="visit-number" id="today-visits">--</span>
+        </div>
+        <div class="visit-item">
+          <span class="lang zh-cn">总访问量</span>
+          <span class="lang zh-tw">總訪問量</span>
+          <span class="lang en">Total</span>
+          <span class="visit-number" id="total-visits">--</span>
+        </div>
+      </div>
     </div>
     <div class="hero-card">
       <img src="images/profile.jpg" alt="韩睿 Rui Han" class="profile-img">
@@ -183,5 +224,39 @@
 </footer>
 
 <script src="js/main.js"></script>
+
+<script>
+  // Visitor counter for GitHub Pages.
+  // This uses a third-party counting API because static GitHub Pages cannot store visit data by itself.
+  (function () {
+    const todayEl = document.getElementById("today-visits");
+    const totalEl = document.getElementById("total-visits");
+    if (!todayEl || !totalEl) return;
+
+    const namespace = "rhneurosci-github-io";
+    const todayKey = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Shanghai",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).format(new Date()).replaceAll("-", "");
+
+    async function hitCounter(key, element) {
+      try {
+        const response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`, {
+          cache: "no-store"
+        });
+        if (!response.ok) throw new Error("Counter request failed");
+        const data = await response.json();
+        element.textContent = typeof data.value === "number" ? data.value.toLocaleString() : "--";
+      } catch (error) {
+        element.textContent = "--";
+      }
+    }
+
+    hitCounter("total", totalEl);
+    hitCounter(`daily-${todayKey}`, todayEl);
+  })();
+</script>
 </body>
 </html>
