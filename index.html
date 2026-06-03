@@ -36,19 +36,14 @@
   }
 
 
-  /* Footer homepage statistics: shown only on the homepage */
-  .footer-pageview-counter,
-  .footer-last-visit {
-    margin-bottom: 6px;
+  /* Footer page-view counter: shown only on the homepage */
+  .footer-pageview-counter {
+    margin-bottom: 8px;
     font-size: 0.9rem;
     color: #5b6675;
     text-align: center;
     line-height: 1.6;
     white-space: nowrap;
-  }
-
-  .footer-last-visit {
-    margin-bottom: 8px;
   }
 
 
@@ -200,12 +195,6 @@
       <span class="lang en">Page Views: </span>
       <span id="busuanzi_value_site_pv">--</span>
     </div>
-    <div class="footer-last-visit">
-      <span class="lang zh-cn">上次访问时间：</span>
-      <span class="lang zh-tw">上次訪問時間：</span>
-      <span class="lang en">Last Visit: </span>
-      <span id="last_visit_time">首次访问</span>
-    </div>
 
     <span class="lang zh-cn">&copy; RH Brain Lab ｜ 厦门大学嘉庚学院</span>
     <span class="lang zh-tw">&copy; RH Brain Lab ｜ 廈門大學嘉庚學院</span>
@@ -214,33 +203,6 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script>
-  (function () {
-    const storageKey = "rhbrainlab_last_visit_time";
-    const display = document.getElementById("last_visit_time");
-    const previousVisit = localStorage.getItem(storageKey);
-    const now = new Date();
-
-    function formatDateTime(date) {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const day = String(date.getDate()).padStart(2, "0");
-      const hour = String(date.getHours()).padStart(2, "0");
-      const minute = String(date.getMinutes()).padStart(2, "0");
-      return `${year}-${month}-${day} ${hour}:${minute}`;
-    }
-
-    if (display) {
-      if (previousVisit) {
-        display.textContent = previousVisit;
-      } else {
-        display.textContent = "首次访问";
-      }
-    }
-
-    localStorage.setItem(storageKey, formatDateTime(now));
-  })();
-</script>
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
